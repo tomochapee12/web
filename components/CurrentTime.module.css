@@ -1,0 +1,5 @@
+.clockContainer { display: flex; align-items: center; gap: 1.5rem; }
+.clock { width: 80px; height: 80px; border: 2px solid var(--text-color); border-radius: 50%; position: relative; }
+.hand { width: 50%; height: 2px; background: var(--text-color); position: absolute; top: 50%; transform-origin: 100%; }
+.second { background: var(--link-color); width: 45%; }
+.digital { font-size: 2em; font-weight: bold; }

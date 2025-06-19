@@ -1,7 +1,6 @@
 'use client'; 
 
 import { useState, useEffect } from 'react';
-import Tilt from 'react-parallax-tilt';
 import styles from './Hero.module.css';
 
 const backgroundImages = [
@@ -22,32 +21,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className={styles.heroContainer}>
-      {backgroundImages.map((image, index) => (
-        <div
-          key={image}
-          className={styles.heroBackground}
-          style={{
-            backgroundImage: `url(${image})`,
-            opacity: index === currentImageIndex ? 1 : 0,
-          }}
-        />
-      ))}
-      
-      <Tilt
-        className={styles.tilt}
-        perspective={1000}
-        glareEnable={true}
-        glareMaxOpacity={0.3}
-        glarePosition="all"
-        scale={1.02}
-      >
-        <div className={styles.heroContent}>
-          <h1>Tomochapee</h1>
-          <p>I love programming.</p>
-        </div>
-      </Tilt>
-
+    <div id="hero-container" className={styles.heroContainer}>
+      <div className={styles.heroContent}>
+        <h1>Tomochapee</h1>
+        <p>I love programming.</p>
+      </div>
       <div className={styles.scrollDownArrow}>
         <span>∨</span>
       </div>

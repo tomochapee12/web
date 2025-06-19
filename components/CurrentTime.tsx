@@ -1,25 +1,33 @@
-'use client'; // このコンポーネントはクライアントサイドで動作することを宣言
-
+'use client';
 import { useState, useEffect } from 'react';
+import styles from './CurrentTime.module.css';
 
 export default function CurrentTime() {
-  const [time, setTime] = useState('');
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
-    // 1秒ごとに時間を更新する
-    const timerId = setInterval(() => {
-      const now = new Date();
-      setTime(now.toLocaleString('ja-JP'));
-    }, 1000);
-
-    // コンポーネントが不要になったらタイマーを停止する
+    const timerId = setInterval(() => setDate(new Date()), 1000);
     return () => clearInterval(timerId);
-  }, []); // [] は初回のみ実行するという意味
+  }, []);
+
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+
+  const hourDeg = (hours % 12) * 30 + minutes * 0.5;
+  const minuteDeg = minutes * 6;
+  const secondDeg = seconds * 6;
 
   return (
-    <div className="widget">
-      <h3>Local Time</h3>
-      <p style={{ fontSize: '1.2em' }}>{time || 'Loading...'}</p>
+    <div className={`${styles.clockContainer} widget`}>
+      <div className={styles.clock}>
+        <div className={styles.hand} style={{ transform: `rotate(${hourDeg}deg)` }} />
+        <div className={styles.hand} style={{ transform: `rotate(${minuteDeg}deg)` }} />
+        <div className={`${styles.hand} ${styles.second}`} style={{ transform: `rotate(${secondDeg}deg)` }} />
+      </div>
+      <div className={styles.digital}>
+        {date.toLocaleTimeString('ja-JP')}
+      </div>
     </div>
   );
 }

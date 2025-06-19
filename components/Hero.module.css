@@ -6,6 +6,7 @@
   align-items: center;
   color: white;
   overflow: hidden;
+  background-color: var(--bg-color);
 }
 .heroBackground {
   position: absolute;
@@ -17,6 +18,8 @@
   background-position: center;
   transition: opacity 1.5s ease-in-out;
   animation: slowPan 20s infinite alternate ease-in-out;
+  transform: translate(var(--move-x, 0), var(--move-y, 0)) scale(1.1);
+  transition: opacity 1.5s ease-in-out, transform 0.2s linear;
 }
 @keyframes slowPan {
   from { transform: scale(1); }
