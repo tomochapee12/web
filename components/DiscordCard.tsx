@@ -7,7 +7,7 @@ import { FaDiscord } from 'react-icons/fa';
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 // あなたのDiscordユーザーIDに置き換えてください
-const DISCORD_ID = 'YOUR_DISCORD_ID_HERE'; 
+const DISCORD_ID = 'tete_1212'; 
 
 export default function DiscordCard() {
   const { data, error } = useSWR(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`, fetcher, {
