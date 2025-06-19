@@ -1,11 +1,17 @@
 // GitHubから最新リポジトリ5つを取得する非同期コンポーネント
-async function getRepos() {
+interface Repo {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string | null;
+}
+
+async function getRepos(): Promise<Repo[]> { 
   const username = "tomochapee12";
   const url = `https://api.github.com/users/${username}/repos?sort=pushed&per_page=5&type=owner`;
 
   try {
-    // revalidate: 1時間ごとにデータを再取得
-    const response = await fetch(url, { next: { revalidate: 3600 } });
+    const response = await fetch(url, { cache: 'no-store' }); // cache: 'no-store' に変更
     if (!response.ok) {
       return [];
     }
@@ -22,9 +28,8 @@ export default async function LatestRepos() {
   return (
     <div className="widget">
       <h3>Latest Repositories</h3>
-      {repos.length > 0 ? (
-        <ul>
-          {repos.map((repo: any) => (
+      <ul>
+          {repos.map((repo) => (
             <li key={repo.id} style={{ borderBottom: '1px solid var(--border-color)', padding: '0.5rem 0' }}>
               <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
                 {repo.name}
@@ -35,9 +40,6 @@ export default async function LatestRepos() {
             </li>
           ))}
         </ul>
-      ) : (
-        <p>Could not load repositories.</p>
-      )}
     </div>
   );
 }

@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 export default function OsuCard() {
   return (
     <div className="widget">
