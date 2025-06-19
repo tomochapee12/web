@@ -21,13 +21,14 @@ export default function Hero() {
   }, []);
 
   return (
-    <div id="hero-container" className={styles.heroContainer}>
+    <div
+      id="hero-container"
+      className={styles.heroContainer}
+      style={{ backgroundImage: `url(${backgroundImages[currentImageIndex]})` }}
+    >
       <div className={styles.heroContent}>
         <h1>Tomochapee</h1>
         <p>I love programming.</p>
-      </div>
-      <div className={styles.scrollDownArrow}>
-        <span>∨</span>
       </div>
     </div>
   );
