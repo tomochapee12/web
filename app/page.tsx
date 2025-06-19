@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import Hero from "@/components/Hero";
 import LatestRepos from "@/components/LatestRepos";
 import SocialLinks from "@/components/SocialLinks";
