@@ -1,4 +1,7 @@
-
+/* 
+  GitHubリポジトリカード
+  最近更新したリポジトリを最大5つ表示。各リポジトリの名前、簡単な説明、使用言語、そしてクリックするとGitHubページに飛べるリンク
+*/
 import { FaGithub } from 'react-icons/fa';
 
 export default function GithubCard() {

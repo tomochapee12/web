@@ -1,4 +1,4 @@
-// src/components/DiscordCard.tsx
+//DIsocrdの自分へのリンク、オンラインのアクティビティを表示させるカード
 
 'use client';
 import useSWR from 'swr';
@@ -6,12 +6,11 @@ import { FaDiscord } from 'react-icons/fa';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-// あなたのDiscordユーザーIDに置き換えてください
 const DISCORD_ID = 'tete_1212'; 
 
 export default function DiscordCard() {
   const { data, error } = useSWR(`https://api.lanyard.rest/v1/users/${DISCORD_ID}`, fetcher, {
-    refreshInterval: 10000, // 10秒ごとに更新
+    refreshInterval: 10000,
   });
 
   const statusColors: { [key: string]: string } = {

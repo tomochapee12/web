@@ -1,3 +1,7 @@
+/*
+  サイトを閲覧しているユーザーのPCの現在時刻をリアルタイムで表示。→日本の現在時刻を時計の表記とデジタル表記で表示したい。
+  時が一番短く、分を二番目に長く、秒は点を一番外で回す。
+*/
 'use client';
 import { useState, useEffect } from 'react';
 import styles from './CurrentTime.module.css';

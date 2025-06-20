@@ -36,10 +36,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. 最初に表示されるヒーローセクション */}
       <Hero />
       <SocialLinks />
-      {/* 2. スクロール後に表示されるコンテンツグリッド */}
       <div className="widgets-grid">
         <div className="main-column">
           <GithubCard />

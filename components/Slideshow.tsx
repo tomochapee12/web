@@ -1,4 +1,7 @@
-'use client'; // このコンポーネントはクライアントサイドで動作する
+/*
+  小さなスライドショー形式で表示
+*/
+'use client';
 
 import { useState, useEffect } from 'react';
 
@@ -15,7 +18,7 @@ export default function Slideshow() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // 5秒ごとに画像を切り替え
+    }, 10000); // 10秒ごとに画像を切り替え
 
     return () => clearInterval(intervalId);
   }, []);

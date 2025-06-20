@@ -1,3 +1,6 @@
+/*
+  このサイトへの累計アクセス数を表示。現在動作していない。アクセス数を数値で表示させたい。
+*/
 export default function VisitorCounter() {
   return (
     <div className="widget">
