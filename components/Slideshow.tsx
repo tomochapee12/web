@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 const images = [
   "/slideshow/image1.jpg",
   "/slideshow/image2.png",
-  // 他の画像も追加
+  "/slideshow/image3.png",
 ];
 
 export default function Slideshow() {
