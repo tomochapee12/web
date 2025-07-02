@@ -19,16 +19,11 @@ export async function onRequestGet({ env }) {
  * @param {object} context - Cloudflare Pagesのコンテキスト
  */
 export async function onRequestPost({ env }) {
-  // 現在の値を取得（なければ0）
   let count = parseInt(await env.PORTFOLIO_COUNTER.get('views') || '0');
-  
-  // 1増やす
   count++;
-  
-  // 新しい値をKVに保存する
   await env.PORTFOLIO_COUNTER.put('views', count.toString());
   
-  // 更新後の値を返す
+  // ★更新後の値をレスポンスとして返す
   return new Response(count.toString(), {
     headers: { 'Content-Type': 'text/plain' },
   });

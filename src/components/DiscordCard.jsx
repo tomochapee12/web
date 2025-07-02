@@ -24,7 +24,7 @@ const DiscordCard = () => {
     };
 
     fetchLanyardData();
-    const interval = setInterval(fetchLanyardData, 100000);
+    const interval = setInterval(fetchLanyardData, 300000);
 
     return () => clearInterval(interval);
   }, [discordId]);

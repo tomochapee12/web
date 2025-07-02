@@ -1,47 +1,58 @@
-// src/components/VisitorsCard.jsx
 import React, { useState, useEffect } from 'react';
 import './VisitorsCard.css';
 
-const Digit = ({ number }) => (
-  <div className="digit-box">{number}</div>
-);
+// ... Digitコンポーネントは変更なし ...
 
 const VisitorsCard = () => {
-  // useStateでカウンターの値を管理
   const [count, setCount] = useState('0000000');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchAndIncrementCounter = async () => {
+    // セッションストレージを使って、同じブラウザセッション内での重複カウントを防ぐ
+    const hasVisited = sessionStorage.getItem('portfolio_visited');
+
+    const fetchCounter = async (shouldIncrement) => {
       try {
-        // 1. まず現在のカウント数を取得
-        const getResponse = await fetch('/api/counter');
-        if (getResponse.ok) {
-          const currentCount = await getResponse.text();
-          // 7桁になるように左側を0で埋める
-          setCount(currentCount.padStart(7, '0'));
+        let response;
+        if (shouldIncrement) {
+          // ★カウントアップAPI(POST)だけを呼び出す
+          response = await fetch('/api/counter', { method: 'POST' });
+        } else {
+          // ★既に訪問済みの場合はGETで取得するだけ
+          response = await fetch('/api/counter');
         }
 
-        // 2. 次にカウントを1増やすリクエストを送る
-        // この結果は表示には使わない（次にアクセスした人向け）
-        await fetch('/api/counter', { method: 'POST' });
-
+        if (response.ok) {
+          const currentCount = await response.text();
+          setCount(currentCount.padStart(7, '0'));
+        }
       } catch (error) {
         console.error("Counter API error:", error);
-        // エラー時はダミーデータを表示
         setCount('-------');
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    fetchAndIncrementCounter();
-  }, []); // 初回レンダリング時に一度だけ実行
+    if (!hasVisited) {
+      // まだ訪問していない場合
+      fetchCounter(true); // カウントアップする
+      sessionStorage.setItem('portfolio_visited', 'true'); // 訪問済みフラグを立てる
+    } else {
+      // 既に訪問済みの場合
+      fetchCounter(false); // 取得だけする
+    }
+
+  }, []);
 
   return (
     <div className="visitors-card">
       <h3 className="visitors-title">Visitors</h3>
       <div className="counter-display">
-        {count.split('').map((char, index) => (
-          <Digit key={index} number={char} />
-        ))}
+        {isLoading 
+          ? '...'.padStart(7, ' ').split('').map((c, i) => <Digit key={i} number={c} />)
+          : count.split('').map((char, index) => <Digit key={index} number={char} />)
+        }
       </div>
     </div>
   );
