@@ -1,0 +1,33 @@
+.visitors-card {
+  background-color: #ffd580;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.visitors-title {
+  margin: 0 0 16px 0;
+  font-weight: 600;
+  color: #333;
+  opacity: 0.8;
+  font-size: 1.1rem;
+}
+
+.counter-display {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.digit-box {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 6px;
+  min-width: 20px;
+  text-align: center;
+}
