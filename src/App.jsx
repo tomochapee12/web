@@ -9,6 +9,7 @@ import OsuCard from './components/OsuCard';
 import VisitorsCard from './components/VisitorsCard';
 import ClockCard from './components/ClockCard';
 import SlideshowCard from './components/SlideshowCard';
+import AnnictCard from './components/AnnictCard';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <main className="main-content">
           <div className="column column-1">
             <RepoList />
+            <AnnictCard />
           </div>
           <div className="column column-2">
             <BlogCard />
