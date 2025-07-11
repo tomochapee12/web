@@ -10,13 +10,10 @@ const VisitorsCard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Viteの環境変数で開発環境(ローカル)かどうかを判定
     if (import.meta.env.DEV) {
-      // 開発環境の場合、固定の数値を表示
       setCount('0000000');
       setIsLoading(false);
     } else {
-      // 本番環境の場合、APIから訪問者数を表示
       const processCounter = async () => {
         try {
           const getResponse = await fetch('/api/counter');

@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import './AnnictCard.css';
 
 const AnnictIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="#333">
-    <path d="M8 5v14l11-7z"/>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M13 18V20H17V22H7V20H11V18H3C2.44772 18 2 17.5523 2 17V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V17C22 17.5523 21.5523 18 21 18H13ZM4 5V16H20V5H4ZM10 7.5L15 10.5L10 13.5V7.5Z"></path>
   </svg>
 );
 
@@ -13,7 +13,6 @@ const AnnictCard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // .envファイルからアクセストークンを読み込みます
   const accessToken = import.meta.env.VITE_ANNICT_API_TOKEN;
 
   useEffect(() => {
@@ -24,7 +23,6 @@ const AnnictCard = () => {
     }
 
     const fetchAnnictData = async () => {
-      // 年代順（降順）で最新3件を取得するクエリ
       const query = `
         query {
           viewer {
@@ -96,24 +94,20 @@ const AnnictCard = () => {
       </div>
       <div className="anime-list">
         {animeList.map(anime => {
-          // 表示する画像URLと、それに応じたレイアウトタイプを決定する
           let imageUrl = anime.image.recommendedImageUrl;
-          let imageType = 'portrait'; // デフォルトは縦長（ポートレート）
+          let imageType = 'portrait';
 
-          // recommendedImageUrlがなければ、facebookOgImageUrlを試す
           if (!imageUrl) {
             imageUrl = anime.image.facebookOgImageUrl;
             if (imageUrl) {
-              imageType = 'landscape'; // あれば横長（ランドスケープ）に設定
+              imageType = 'landscape';
             }
           }
 
-          // それでもなければ、twitterAvatarUrlを試す (これはポートレート扱い)
           if (!imageUrl) {
             imageUrl = anime.image.twitterAvatarUrl;
           }
 
-          // layoutClassを動的に生成
           const layoutClass = imageType === 'landscape' ? 'anime-item-landscape' : '';
 
           return (

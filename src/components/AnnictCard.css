@@ -1,7 +1,6 @@
 /* src/components/AnnictCard.css */
 
 .annict-card {
-  /* 既存のカードスタイルを適用 */
   background-color: #ffd580;
   padding: 24px;
   border-radius: 16px;
@@ -9,7 +8,6 @@
 }
 
 .annict-card .card-header {
-  /* 既存のスタイル定義を再利用 */
   display: flex;
   align-items: center;
   gap: 12px;
@@ -17,7 +15,6 @@
 }
 
 .annict-card .card-icon {
-  /* 既存のスタイル定義を再利用 */
   background-color: rgba(255, 255, 255, 0.5);
   width: 40px;
   height: 40px;
@@ -28,7 +25,6 @@
 }
 
 .annict-card .card-title {
-  /* 既存のスタイル定義を再利用 */
   margin: 0;
   font-size: 1.2rem;
   font-weight: 600;
@@ -37,13 +33,13 @@
 .anime-list {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* 各アニメ間の余白 */
+  gap: 16px;
 }
 
 .anime-item {
   display: flex;
   align-items: center;
-  gap: 16px; /* 画像とテキストの間の余白 */
+  gap: 16px;
   text-decoration: none;
   color: inherit;
   padding: 8px;
@@ -57,10 +53,10 @@
 
 .anime-image {
   width: 60px;
-  height: 84px; /* アニメのキービジュアルは少し縦長に */
+  height: 84px;
   border-radius: 6px;
-  object-fit: cover; /* 画像が潰れないように */
-  flex-shrink: 0; /* 画像が縮まないように */
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .anime-details {
@@ -72,7 +68,6 @@
   margin: 0;
   font-weight: 600;
   font-size: 1rem;
-  /* 長いタイトルがはみ出ないように */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -95,19 +90,13 @@
 }
 
 .anime-item-landscape {
-  flex-direction: column; /* 要素を縦に並べる */
-  align-items: flex-start;  /* 左揃えにする */
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* 横長レイアウトの時の画像スタイル */
 .anime-item-landscape .anime-image {
-  width: 100%;       /* 幅をコンテナいっぱいに */
-  height: auto;      /* 高さを自動に */
-  aspect-ratio: 16 / 9; /* アスペクト比を16:9に固定 */
-  margin-bottom: 12px; /* 画像とテキストの間に余白を追加 */
-}
-
-/* 横長レイアウトの時のテキスト詳細 */
-.anime-item-landscape .anime-details {
-  /* ここは特に変更不要ですが、必要に応じて微調整 */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 12px;
 }

@@ -3,8 +3,8 @@ import './BlogCard.css';
 import blogThumbnail from '../assets/blog-thumbnail.jpg';
 
 const BlogIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 -960 960 960" fill="#333">
-    <path d="M240-360h160v-80H240v80Zm0 160h160v-80H240v80Zm-80 160q-33 0-56.5-23.5T80-120v-720q0-33 23.5-56.5T160-920h360l240 240v440q0 33-23.5 56.5T680-120H160Zm0-80h520v-440L520-800H160v600Zm360-440h160L520-800v160ZM160-800v-40 600-560Z"/>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M2 4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4ZM4 5V19H20V5H4ZM6 7H12V13H6V7ZM8 9V11H10V9H8ZM14 9H18V7H14V9ZM18 13H14V11H18V13ZM6 15V17L18 17V15L6 15Z"></path>
   </svg>
 );
 
