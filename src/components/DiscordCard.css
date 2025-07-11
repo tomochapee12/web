@@ -21,13 +21,16 @@
   margin-bottom: 16px;
 }
 .discord-icon-wrapper {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5); 
+  
   border-radius: 8px;
-  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 12px;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box; 
 }
 .discord-title-group { flex-grow: 1; }
 .discord-title { margin: 0; font-size: 1.2rem; }
