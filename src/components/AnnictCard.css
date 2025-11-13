@@ -1,97 +1,140 @@
-/* src/components/AnnictCard.css */
-
+/* .annict-card: shared card surface for the anime activity feed */
 .annict-card {
-  background-color: #ffd580;
-  padding: 24px;
-  border-radius: 16px;
-  color: #333;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 4vw, 28px);
+  color: var(--fg);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(18px);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color 200ms ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
 }
 
+/* subtle glow on hover emphasises interactivity */
+.annict-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-strong);
+  border-color: var(--accent-border-strong);
+}
+
+.annict-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25), var(--card-shadow);
+  border-color: var(--accent-strong);
+}
+
+/* .card-header: aligns icon and title */
 .annict-card .card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 16px;
 }
 
+/* .card-icon: accent-backed icon tile */
 .annict-card .card-icon {
-  background-color: rgba(255, 255, 255, 0.5);
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  background: var(--accent-soft);
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--accent);
 }
 
+/* .card-title: section title styling */
 .annict-card .card-title {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: clamp(1.1rem, 2.4vw, 1.3rem);
   font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
+/* .anime-list: stacked list of anime entries */
 .anime-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 16px;
 }
 
+/* .anime-item: link row with hover lift */
 .anime-item {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
   gap: 16px;
   text-decoration: none;
   color: inherit;
-  padding: 8px;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: transform var(--transition-base), background-color 200ms ease-out, border-color 200ms ease-out, box-shadow var(--transition-base);
 }
 
 .anime-item:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background: rgba(74, 108, 247, 0.14);
+  border-color: var(--accent-border-strong);
+  transform: translateY(-2px);
 }
 
+.anime-item:focus-visible {
+  background: rgba(74, 108, 247, 0.18);
+  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25);
+}
+
+/* .anime-image: poster thumbnail scaling */
 .anime-image {
   width: 60px;
   height: 84px;
-  border-radius: 6px;
+  border-radius: 10px;
   object-fit: cover;
   flex-shrink: 0;
 }
 
+/* .anime-details: vertical text grouping */
 .anime-details {
   display: flex;
   flex-direction: column;
+  gap: 6px;
 }
 
+/* .anime-title: clamped title text */
 .anime-title {
   margin: 0;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+/* .anime-season: muted metadata */
 .anime-season {
-  margin: 4px 0 0 0;
+  margin: 0;
   font-size: 0.85rem;
-  opacity: 0.8;
-  text-transform: capitalize; /* 'SUMMER' -> 'Summer' */
+  color: color-mix(in srgb, var(--fg-muted) 88%, var(--fg) 12%);
+  text-transform: capitalize;
 }
 
-.loading-placeholder, .error-message {
+/* loading and error states stay centred within card */
+.loading-placeholder,
+.error-message {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 200px;
-  opacity: 0.7;
+  color: var(--fg-muted);
 }
 
+/* landscape variant reflows details for wide artwork */
 .anime-item-landscape {
-  flex-direction: column;
-  align-items: flex-start;
+  grid-template-columns: 1fr;
+  align-items: start;
 }
 
 .anime-item-landscape .anime-image {
@@ -99,4 +142,5 @@
   height: auto;
   aspect-ratio: 16 / 9;
   margin-bottom: 12px;
+  border-radius: var(--radius-sm);
 }

@@ -1,13 +1,24 @@
+/* .slideshow-container: animated gallery card */
 .slideshow-container {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  background-color: #ddd;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  backdrop-filter: blur(18px);
+  transition: transform 160ms ease-out, box-shadow 160ms ease-out, border-color 200ms ease-out;
 }
 
+.slideshow-container:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-strong);
+  border-color: var(--accent-border-strong);
+}
+
+/* .slide: absolute positioned slides with ken burns effect */
 .slide {
   position: absolute;
   top: 0;
@@ -17,15 +28,16 @@
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  transition: opacity 1.6s ease-in-out;
   animation-name: ken-burns;
-  animation-duration: 30s;
+  animation-duration: 28s;
   animation-timing-function: ease-out;
   animation-iteration-count: infinite;
+  filter: saturate(1.08) brightness(1.05);
 }
 
 .slide:nth-child(odd) {
-    animation-name: ken-burns-alt;
+  animation-name: ken-burns-alt;
 }
 
 .slide.active {
@@ -37,7 +49,7 @@
     transform: scale(1) translate(0, 0);
   }
   100% {
-    transform: scale(1.15) translate(-2%, 2%);
+    transform: scale(1.12) translate(-2%, 2%);
   }
 }
 
@@ -46,6 +58,6 @@
     transform: scale(1) translate(0, 0);
   }
   100% {
-    transform: scale(1.15) translate(2%, -2%);
+    transform: scale(1.12) translate(2%, -2%);
   }
 }
