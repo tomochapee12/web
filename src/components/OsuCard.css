@@ -1,19 +1,33 @@
+/* .osu-card-wrapper: media card housing osu! iframe */
 .osu-card-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 550 / 320;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background-color: #1a1a1a;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(18px);
+  transition: transform 160ms ease-out, box-shadow 160ms ease-out, border-color 200ms ease-out;
 }
 
 .osu-card-wrapper:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow-strong);
+  border-color: var(--accent-border-strong);
 }
 
+/* subtle overlay to keep iframe readable */
+.osu-card-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(245, 247, 255, 0.8));
+  pointer-events: none;
+}
+
+/* .osu-iframe: embedded profile */
 .osu-iframe,
 .osu-card-link-overlay {
   position: absolute;
@@ -26,8 +40,10 @@
 
 .osu-iframe {
   display: block;
+  filter: saturate(1.05) brightness(1.03);
 }
 
+/* overlay anchor keeps whole card clickable */
 .osu-card-link-overlay {
-  z-index: 1;
+  z-index: 2;
 }

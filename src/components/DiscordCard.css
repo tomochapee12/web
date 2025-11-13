@@ -1,98 +1,159 @@
+/* .discord-card: live status surface with status accent bar */
 .discord-card {
-  background-color: #ffd580;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-left: 5px solid;
-  transition: all 0.3s ease;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 4vw, 28px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(18px);
+  transition: transform 160ms ease-out, box-shadow 160ms ease-out, border-color 200ms ease-out;
+  border-left: 6px solid var(--accent-border-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--fg);
 }
 
+.discord-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-strong);
+  border-color: var(--accent-border-strong);
+}
 
+/* status variants tint the accent bar */
 .discord-card.status-online { border-left-color: #43b581; }
 .discord-card.status-idle { border-left-color: #faa61a; }
 .discord-card.status-dnd { border-left-color: #f04747; }
 .discord-card.status-offline { border-left-color: #747f8d; }
 
-
+/* .discord-header: aligns icon, text and action button */
 .discord-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  gap: clamp(16px, 4vw, 24px);
 }
+
+/* .discord-icon-wrapper: icon tile with subtle glow */
 .discord-icon-wrapper {
-  background-color: rgba(255, 255, 255, 0.5); 
-  
-  border-radius: 8px;
+  background: var(--accent-soft);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 12px;
-  width: 40px;
-  height: 40px;
-  box-sizing: border-box; 
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+  transition: transform 160ms ease-out;
 }
-.discord-title-group { flex-grow: 1; }
-.discord-title { margin: 0; font-size: 1.2rem; }
-.discord-username { margin: 0; font-size: 0.9rem; opacity: 0.7; }
-.follow-button-discord {
-  background-color: #5865F2;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
-}
-.follow-button-discord:hover { background-color: #4752C4; }
 
+.discord-card:hover .discord-icon-wrapper {
+  transform: scale(1.05);
+}
+
+/* .discord-title-group: groups title and username */
+.discord-title-group {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.discord-title {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  font-weight: 600;
+}
+
+.discord-username {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--fg-muted);
+}
+
+/* .discord-status-wrapper: status chip row */
 .discord-status-wrapper {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 10px;
 }
+
 .status-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-}
-.status-text {
-  margin: 0;
-  font-weight: 500;
-  text-transform: capitalize; /* online -> Online */
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.16);
 }
 
-.activity-card {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  padding: 12px;
+.status-text {
+  margin: 0;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--fg-muted);
 }
+
+/* .activity-card: nested card for current activity */
+.activity-card {
+  background: rgba(74, 108, 247, 0.08);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .activity-title {
   font-size: 0.75rem;
   font-weight: 600;
-  opacity: 0.6;
-  margin: 0 0 8px 0;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  margin: 0;
 }
+
 .activity-details {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
+
 .activity-image {
   width: 60px;
   height: 60px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   object-fit: cover;
 }
-.activity-name { font-weight: 600; margin: 0; }
-.activity-state { font-size: 0.85rem; margin: 2px 0 0 0; opacity: 0.8; }
 
+.activity-name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.activity-state {
+  margin: 2px 0 0 0;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+
+/* placeholder keeps layout stable while loading */
 .discord-card-placeholder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  background-color: #f0e6d2;
-  border-radius: 12px;
+  padding: clamp(22px, 4vw, 28px);
+  border-radius: var(--radius-lg);
+  background: rgba(74, 108, 247, 0.08);
+  border: 1px solid var(--card-border);
+  color: var(--fg-muted);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  /* wrap header content on narrow viewports */
+  .discord-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .follow-button-discord {
+    width: 100%;
+    justify-content: center;
+  }
 }
