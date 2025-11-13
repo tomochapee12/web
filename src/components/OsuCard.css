@@ -24,15 +24,6 @@
   border-color: var(--accent-strong);
 }
 
-/* subtle overlay to keep iframe readable */
-.osu-card-wrapper::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(245, 247, 255, 0.8));
-  pointer-events: none;
-}
-
 /* .osu-iframe: embedded profile */
 .osu-iframe,
 .osu-card-link-overlay {
@@ -46,7 +37,7 @@
 
 .osu-iframe {
   display: block;
-  filter: saturate(1.05) brightness(1.03);
+  filter: none;
 }
 
 /* overlay anchor keeps whole card clickable */

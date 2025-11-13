@@ -50,10 +50,31 @@
 /* .hero-title: prominent nameplate typography */
 .hero-title {
   font-size: clamp(2.8rem, 6vw, 4.1rem);
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 0 12px 0;
-  letter-spacing: 0.015em;
-  color: var(--fg);
+  letter-spacing: 0.02em;
+  font-family: var(--font-display);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2em 0.65em;
+  color: transparent;
+  background: linear-gradient(120deg, rgba(74, 108, 247, 0.95) 0%, rgba(126, 132, 255, 0.95) 45%, rgba(255, 143, 177, 0.98) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 0 14px 30px rgba(87, 110, 255, 0.28);
+}
+
+.hero-title::after {
+  content: '';
+  position: absolute;
+  inset: -22% -26%;
+  background: linear-gradient(135deg, rgba(74, 108, 247, 0.24), rgba(255, 172, 194, 0.22));
+  border-radius: 999px;
+  z-index: -1;
+  filter: blur(0px);
+  opacity: 0.92;
+  pointer-events: none;
 }
 
 /* .hero-subtitle: supporting copy with muted tone */
@@ -85,7 +106,6 @@
   transform: translate(-50%, 0);
   width: 32px;
   height: 52px;
-  border: 1px solid rgba(74, 108, 247, 0.28);
   border-radius: 999px;
   display: flex;
   justify-content: center;

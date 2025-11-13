@@ -70,8 +70,9 @@
 
 .time-string {
   margin: 0;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+  font-family: var(--font-numeric);
+  font-variant-numeric: tabular-nums;
   font-size: clamp(2.1rem, 6vw, 2.8rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }

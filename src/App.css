@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600&family=Sora:wght@500;600;700&display=swap');
+
 /* :root: shared color tokens and motion timings for the entire layout */
 :root {
   --bg: #fdfdff;
@@ -19,7 +21,9 @@
   --card-shadow: 0 26px 44px -28px rgba(31, 45, 97, 0.32);
   --card-shadow-strong: 0 30px 64px -28px rgba(31, 45, 97, 0.46);
   --transition-base: 160ms ease-out;
-  --font-body: 'Inter', 'Noto Sans JP', 'Hiragino Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Manrope', 'Noto Sans JP', 'Hiragino Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Sora', 'Manrope', 'Noto Sans JP', 'Hiragino Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-numeric: 'Space Grotesk', 'Manrope', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 /* html, body: apply atmospheric background and typography baseline */
@@ -31,7 +35,8 @@ body {
   color: var(--fg);
   font-family: var(--font-body);
   line-height: 1.7;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.005em;
+  font-feature-settings: 'liga' 1, 'kern' 1;
 }
 
 /* body: smooth rendering and spacing reset */
