@@ -9,13 +9,13 @@
   border: 1px solid var(--card-border);
   background: var(--card-bg);
   backdrop-filter: blur(18px);
-  transition: transform 160ms ease-out, box-shadow 160ms ease-out, border-color 200ms ease-out;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .slideshow-container:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--card-shadow-strong);
-  border-color: var(--accent-border-strong);
+  border-color: rgba(127, 90, 240, 0.35);
 }
 
 /* .slide: absolute positioned slides with ken burns effect */
@@ -33,7 +33,7 @@
   animation-duration: 28s;
   animation-timing-function: ease-out;
   animation-iteration-count: infinite;
-  filter: saturate(1.08) brightness(1.05);
+  filter: saturate(0.95) brightness(0.92);
 }
 
 .slide:nth-child(odd) {

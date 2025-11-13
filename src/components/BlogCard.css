@@ -11,13 +11,13 @@
   gap: clamp(20px, 4vw, 28px);
   box-shadow: var(--card-shadow);
   backdrop-filter: blur(18px);
-  transition: transform 160ms ease-out, box-shadow 160ms ease-out, border-color 200ms ease-out;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .info-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--card-shadow-strong);
-  border-color: var(--accent-border-strong);
+  border-color: rgba(127, 90, 240, 0.35);
 }
 
 /* .blog-card: horizontal layout for blog feature */
@@ -51,11 +51,6 @@
   justify-content: center;
   align-items: center;
   color: var(--accent);
-  transition: transform 160ms ease-out;
-}
-
-.info-card:hover .card-icon {
-  transform: scale(1.05);
 }
 
 /* .card-title: heading style for cards */
@@ -80,7 +75,7 @@
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
-  box-shadow: inset 0 0 0 1px rgba(74, 108, 247, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .card-image {
@@ -127,24 +122,24 @@
 /* .follow-button: accent pill button for actions */
 .follow-button,
 .follow-button-discord {
-  background: linear-gradient(135deg, var(--accent), #7a8bff);
+  background: linear-gradient(135deg, var(--accent), #5b3efc);
   color: white;
   padding: 10px 18px;
   border-radius: 999px;
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  transition: transform 160ms ease-out, box-shadow 160ms ease-out;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 16px 28px -18px rgba(74, 108, 247, 0.45);
+  box-shadow: 0 12px 24px -16px rgba(127, 90, 240, 0.9);
 }
 
 .follow-button:hover,
 .follow-button-discord:hover {
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 20px 36px -16px rgba(74, 108, 247, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px -12px rgba(127, 90, 240, 0.95);
 }
 
 @media (max-width: 680px) {
