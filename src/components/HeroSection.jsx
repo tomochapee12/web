@@ -33,7 +33,7 @@ const HeroSection = () => {
     <section className="hero-section">
       <div className="hero-content">
         <div style={{ display: 'flex', alignItems: 'center', gap: '48px' }}>
-          <img src={avatarImage} alt="Avatar" className="hero-avatar" />
+          <img src={avatarImage} alt="Portrait of tete_1212" className="hero-avatar" />
           <div className="hero-text-group">
             <h1 className="hero-title">tete_1212</h1>
             <p className="hero-subtitle">{randomComment}</p>

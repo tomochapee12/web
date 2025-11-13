@@ -19,7 +19,7 @@ const BlogCard = () => {
         <p className="status">Archived</p>
       </div>
       <div className="card-image-wrapper">
-        <img src={blogThumbnail} alt="Blog thumbnail" className="card-image" />
+        <img src={blogThumbnail} alt="Preview of posts on t12jp.org blog" className="card-image" />
       </div>
     </a>
   );

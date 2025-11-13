@@ -16,13 +16,19 @@
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
   backdrop-filter: blur(18px);
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color 200ms ease-out;
 }
 
 .clock-card-link:hover .clock-card {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: var(--card-shadow-strong);
-  border-color: rgba(127, 90, 240, 0.35);
+  border-color: var(--accent-border-strong);
+}
+
+.clock-card-link:focus-visible .clock-card {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25), var(--card-shadow);
+  border-color: var(--accent-strong);
 }
 
 /* .clock-icon: circular icon badge */
@@ -35,6 +41,12 @@
   justify-content: center;
   align-items: center;
   color: var(--accent);
+  transition: transform var(--transition-base), color var(--transition-base);
+}
+
+.clock-card-link:hover .clock-icon {
+  transform: scale(1.05);
+  color: var(--accent-strong);
 }
 
 .clock-icon svg path {
@@ -52,7 +64,7 @@
 .date-string {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--fg-muted);
+  color: color-mix(in srgb, var(--fg-muted) 90%, var(--fg) 10%);
   font-weight: 500;
 }
 

@@ -6,8 +6,8 @@
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
   backdrop-filter: blur(18px);
-  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
-  border-left: 6px solid rgba(127, 90, 240, 0.35);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color 200ms ease-out;
+  border-left: 6px solid var(--accent-border-strong);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -15,9 +15,15 @@
 }
 
 .discord-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: var(--card-shadow-strong);
-  border-color: rgba(127, 90, 240, 0.35);
+  border-color: var(--accent-border-strong);
+}
+
+.discord-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25), var(--card-shadow);
+  border-color: var(--accent-strong);
 }
 
 /* status variants tint the accent bar */
@@ -44,6 +50,12 @@
   width: 48px;
   height: 48px;
   color: var(--accent);
+  transition: transform var(--transition-base), color var(--transition-base);
+}
+
+.discord-card:hover .discord-icon-wrapper {
+  transform: scale(1.05);
+  color: var(--accent-strong);
 }
 
 /* .discord-title-group: groups title and username */
@@ -63,7 +75,7 @@
 .discord-username {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--fg-muted);
+  color: color-mix(in srgb, var(--fg-muted) 90%, var(--fg) 10%);
 }
 
 /* .discord-status-wrapper: status chip row */
@@ -77,22 +89,22 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(15, 19, 32, 0.65);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.16);
 }
 
 .status-text {
   margin: 0;
   font-weight: 600;
   text-transform: capitalize;
-  color: var(--fg-muted);
+  color: color-mix(in srgb, var(--fg-muted) 88%, var(--fg) 12%);
 }
 
 /* .activity-card: nested card for current activity */
 .activity-card {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(74, 108, 247, 0.1);
   border-radius: var(--radius-md);
   padding: 16px;
-  border: 1px solid rgba(127, 90, 240, 0.18);
+  border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -102,7 +114,7 @@
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--fg-muted);
+  color: color-mix(in srgb, var(--fg-muted) 92%, var(--fg) 8%);
   margin: 0;
 }
 
@@ -127,15 +139,15 @@
 .activity-state {
   margin: 2px 0 0 0;
   font-size: 0.9rem;
-  color: var(--fg-muted);
+  color: color-mix(in srgb, var(--fg-muted) 86%, var(--fg) 14%);
 }
 
 /* placeholder keeps layout stable while loading */
 .discord-card-placeholder {
   padding: clamp(22px, 4vw, 28px);
   border-radius: var(--radius-lg);
-  background: rgba(20, 24, 34, 0.45);
-  border: 1px solid rgba(127, 90, 240, 0.18);
+  background: rgba(74, 108, 247, 0.08);
+  border: 1px solid var(--card-border);
   color: var(--fg-muted);
   text-align: center;
 }
