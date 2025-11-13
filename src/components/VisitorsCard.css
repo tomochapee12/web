@@ -1,33 +1,66 @@
+/* .visitors-card: compact metric card for visitor counter */
 .visitors-card {
-  background-color: #ffd580;
-  padding: 20px;
-  border-radius: 12px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 4vw, 28px);
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(18px);
+  color: var(--fg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
+.visitors-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-strong);
+  border-color: rgba(127, 90, 240, 0.35);
+}
+
+/* .visitors-title: header label for the metric */
 .visitors-title {
-  margin: 0 0 16px 0;
+  margin: 0 0 18px 0;
   font-weight: 600;
-  color: #333;
-  opacity: 0.8;
-  font-size: 1.1rem;
+  font-size: clamp(1.05rem, 2.3vw, 1.25rem);
+  color: var(--fg-muted);
+  letter-spacing: 0.04em;
 }
 
+/* .counter-display: flex layout for digits */
 .counter-display {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 
+/* .digit-box: mono-digit tile */
 .digit-box {
-  background-color: rgba(0, 0, 0, 0.1);
-  color: #333;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.8rem;
-  font-weight: bold;
-  padding: 4px 12px;
-  border-radius: 6px;
-  min-width: 20px;
-  text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--fg);
+  font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  min-width: 28px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* .loading-dots: placeholder animation while fetching */
+.loading-dots {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  letter-spacing: 0.4em;
+  color: var(--fg-muted);
+  animation: blink 1.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
 }
