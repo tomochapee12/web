@@ -15,11 +15,25 @@ const HeroSection = () => {
   ];
   const randomComment = comments[Math.floor(Math.random() * comments.length)];
 
+  const handleScrollClick = () => {
+    const target = document.querySelector('.container');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleScrollKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleScrollClick();
+    }
+  };
+
   return (
     <section className="hero-section">
       <div className="hero-content">
         <div style={{ display: 'flex', alignItems: 'center', gap: '48px' }}>
-          <img src={avatarImage} alt="Avatar" className="hero-avatar" />
+          <img src={avatarImage} alt="Portrait of tete_1212" className="hero-avatar" />
           <div className="hero-text-group">
             <h1 className="hero-title">tete_1212</h1>
             <p className="hero-subtitle">{randomComment}</p>
@@ -27,7 +41,14 @@ const HeroSection = () => {
         </div>
       </div>
       
-      <div className="scroll-indicator">
+      <div
+        className="scroll-indicator"
+        role="button"
+        tabIndex={0}
+        aria-label="Scroll to content"
+        onClick={handleScrollClick}
+        onKeyDown={handleScrollKeyDown}
+      >
         <ScrollDownIcon />
       </div>
     </section>

@@ -1,43 +1,77 @@
-.clock-card {
-  background-color: #e0e4e8;
-  border-radius: 12px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+/* .clock-card-link: makes the entire clock surface clickable */
+.clock-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
+/* .clock-card: glassy surface for the live clock */
+.clock-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 4vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 4vw, 28px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(18px);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color 200ms ease-out;
+}
+
+.clock-card-link:hover .clock-card {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-strong);
+  border-color: var(--accent-border-strong);
+}
+
+.clock-card-link:focus-visible .clock-card {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25), var(--card-shadow);
+  border-color: var(--accent-strong);
+}
+
+/* .clock-icon: circular icon badge */
 .clock-icon {
-  background-color: rgba(255, 255, 255, 0.7);
+  background: var(--accent-soft);
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: clamp(56px, 10vw, 72px);
+  height: clamp(56px, 10vw, 72px);
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--accent);
+  transition: transform var(--transition-base), color var(--transition-base);
 }
 
+.clock-card-link:hover .clock-icon {
+  transform: scale(1.05);
+  color: var(--accent-strong);
+}
+
+.clock-icon svg path {
+  stroke: var(--accent);
+}
+
+/* .datetime-display: stacks date and time */
 .datetime-display {
-  color: #333;
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .date-string {
   margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.7;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--fg-muted) 90%, var(--fg) 10%);
   font-weight: 500;
 }
 
 .time-string {
-  margin: 4px 0 0 0;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 2.5rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-.clock-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+  margin: 0;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+  font-size: clamp(2.1rem, 6vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
