@@ -13,6 +13,7 @@
   --accent-strong: #2f4de0;
   --accent-soft: rgba(74, 108, 247, 0.2);
   --accent-border-strong: rgba(74, 108, 247, 0.36);
+  --hero-name-gradient: linear-gradient(120deg, #7284ff 0%, #94abff 48%, #e9adff 100%);
   --radius-lg: 22px;
   --radius-md: 16px;
   --radius-sm: 12px;
