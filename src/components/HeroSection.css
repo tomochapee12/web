@@ -76,10 +76,10 @@
 .hero-title::after {
   content: '';
   display: block;
-  width: clamp(120px, 24vw, 240px);
+  width: clamp(200px, 38vw, 420px);
   height: 3px;
   border-radius: 999px;
-  margin: clamp(16px, 3vw, 22px) 0 clamp(8px, 2vw, 14px);
+  margin: clamp(12px, 2.6vw, 18px) 0 clamp(4px, 1.6vw, 10px);
   background: var(--hero-name-gradient);
 }
 
@@ -102,7 +102,7 @@
 .hero-text-group {
   display: flex;
   flex-direction: column;
-  gap: clamp(14px, 3vw, 20px);
+  gap: clamp(8px, 2.4vw, 14px);
   align-items: flex-start;
   justify-content: center;
 }
