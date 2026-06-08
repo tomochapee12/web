@@ -1,13 +1,11 @@
-/* .discord-card: live status surface with status accent bar */
+/* .discord-card: live status surface */
 .discord-card {
   background: var(--card-bg);
   border-radius: var(--radius-lg);
   padding: clamp(22px, 4vw, 28px);
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
-  backdrop-filter: blur(18px);
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color 200ms ease-out;
-  border-left: 6px solid var(--accent-border-strong);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -15,7 +13,7 @@
 }
 
 .discord-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: var(--card-shadow-strong);
   border-color: var(--accent-border-strong);
 }
@@ -25,12 +23,6 @@
   box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25), var(--card-shadow);
   border-color: var(--accent-strong);
 }
-
-/* status variants tint the accent bar */
-.discord-card.status-online { border-left-color: #43b581; }
-.discord-card.status-idle { border-left-color: #faa61a; }
-.discord-card.status-dnd { border-left-color: #f04747; }
-.discord-card.status-offline { border-left-color: #747f8d; }
 
 /* .discord-header: aligns icon, text and action button */
 .discord-header {
@@ -50,12 +42,13 @@
   width: 48px;
   height: 48px;
   color: var(--accent);
-  transition: transform var(--transition-base), color var(--transition-base);
+  border: 1px solid rgba(47, 111, 115, 0.16);
+  transition: color var(--transition-base), border-color var(--transition-base);
 }
 
 .discord-card:hover .discord-icon-wrapper {
-  transform: scale(1.05);
   color: var(--accent-strong);
+  border-color: var(--accent-border-strong);
 }
 
 /* .discord-title-group: groups title and username */
@@ -89,7 +82,8 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.16);
+  background: var(--accent);
+  box-shadow: 0 0 0 2px rgba(32, 42, 55, 0.08);
 }
 
 .status-text {
@@ -101,7 +95,7 @@
 
 /* .activity-card: nested card for current activity */
 .activity-card {
-  background: rgba(74, 108, 247, 0.1);
+  background: rgba(32, 42, 55, 0.05);
   border-radius: var(--radius-md);
   padding: 16px;
   border: 1px solid var(--card-border);
@@ -146,7 +140,7 @@
 .discord-card-placeholder {
   padding: clamp(22px, 4vw, 28px);
   border-radius: var(--radius-lg);
-  background: rgba(74, 108, 247, 0.08);
+  background: rgba(32, 42, 55, 0.06);
   border: 1px solid var(--card-border);
   color: var(--fg-muted);
   text-align: center;

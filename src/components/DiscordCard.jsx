@@ -41,7 +41,7 @@ const DiscordCard = () => {
   }
 
   return (
-    <div className={`discord-card status-${lanyardData.discord_status}`}>
+    <div className="discord-card">
       <div className="discord-header">
         <div className="discord-icon-wrapper">
           <DiscordIcon />
@@ -51,7 +51,7 @@ const DiscordCard = () => {
           <p className="discord-username">{lanyardData.discord_user.username}</p>
         </div>
         <a href="https://discord.com/users/272037078926229504" className="follow-button-discord" target="_blank" rel="noopener noreferrer">
-          Follow
+          Open
         </a>
       </div>
       

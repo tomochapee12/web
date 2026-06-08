@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './ClockCard.css';
 
-const LeftArrowIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15 18L9 12L15 6" stroke="#333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+const ClockIcon = () => (
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="2" />
+        <path d="M12 7V12L15.5 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
 );
 
@@ -40,7 +41,7 @@ const ClockCard = () => {
         <a href="https://www.nict.go.jp/JST/JST5.html" target="_blank" rel="noopener noreferrer" className="clock-card-link">
             <div className="clock-card">
                 <div className="clock-icon">
-                    <LeftArrowIcon />
+                    <ClockIcon />
                 </div>
                 <div className="datetime-display">
                     <p className="date-string">{formatDate(time)} JST</p>

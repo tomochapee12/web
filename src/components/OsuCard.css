@@ -8,12 +8,11 @@
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow);
-  backdrop-filter: blur(18px);
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color 200ms ease-out;
 }
 
 .osu-card-wrapper:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: var(--card-shadow-strong);
   border-color: var(--accent-border-strong);
 }
@@ -24,8 +23,8 @@
   border-color: var(--accent-strong);
 }
 
-/* .osu-iframe: embedded profile */
-.osu-iframe,
+/* .osu-image: rendered signature image */
+.osu-image,
 .osu-card-link-overlay {
   position: absolute;
   top: 0;
@@ -35,9 +34,31 @@
   border: none;
 }
 
-.osu-iframe {
+.osu-image {
   display: block;
-  filter: none;
+  object-fit: cover;
+  background: var(--bg-muted);
+}
+
+.osu-card-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px;
+  background: linear-gradient(135deg, rgba(47, 111, 115, 0.12), rgba(32, 42, 55, 0.06));
+}
+
+.osu-fallback-title {
+  margin: 0;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 700;
+}
+
+.osu-fallback-user {
+  margin: 4px 0 0;
+  color: var(--fg-muted);
 }
 
 /* overlay anchor keeps whole card clickable */

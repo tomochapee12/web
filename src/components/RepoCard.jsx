@@ -14,7 +14,7 @@ const RepoCard = ({ name, description, language, url }) => {
   return (
     <a href={url} className="repo-card" target="_blank" rel="noopener noreferrer">
       <h4 className="repo-name">{name}</h4>
-      <p className="repo-description">{description || 'No description provided.'}</p>
+      {description && <p className="repo-description">{description}</p>}
       
       {language && (
         <div className="repo-language">

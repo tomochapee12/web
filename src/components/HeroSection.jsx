@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './HeroSection.css';
 import avatarImage from '../assets/icon-trans.png';
+
+const comments = [
+  "Welcome to my portfolio!",
+  "ネコとネモは神",
+  "このコメントもAPIで取得している（嘘）",
+  "バーキンはダイヤモンド会員",
+];
+
+const initialCommentIndex = comments.indexOf("Welcome to my portfolio!");
+
+const getRandomCommentIndex = (currentIndex = -1) => {
+  if (comments.length <= 1) return 0;
+
+  let nextIndex = currentIndex;
+  while (nextIndex === currentIndex) {
+    nextIndex = Math.floor(Math.random() * comments.length);
+  }
+
+  return nextIndex;
+};
 
 const ScrollDownIcon = () => (
   <svg
@@ -29,13 +49,15 @@ const ScrollDownIcon = () => (
 );
 
 const HeroSection = () => {
-  const comments = [
-    "ネコとネモは神",
-    "このコメントもAPIで取得している（嘘）",
-    "Welcome to my portfolio!",
-    "バーキンはダイヤモンド会員",
-  ];
-  const randomComment = comments[Math.floor(Math.random() * comments.length)];
+  const [commentIndex, setCommentIndex] = useState(initialCommentIndex >= 0 ? initialCommentIndex : 0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setCommentIndex((currentIndex) => getRandomCommentIndex(currentIndex));
+    }, 5200);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   const handleScrollClick = () => {
     const target = document.querySelector('.container');
@@ -85,7 +107,9 @@ const HeroSection = () => {
           <img src={avatarImage} alt="Portrait of tete_1212" className="hero-avatar" />
           <div className="hero-text-group">
             <h1 className="hero-title">tete_1212</h1>
-            <p className="hero-subtitle">{randomComment}</p>
+            <p key={comments[commentIndex]} className="hero-subtitle">
+              {comments[commentIndex]}
+            </p>
           </div>
         </div>
       </div>

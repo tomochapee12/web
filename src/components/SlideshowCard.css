@@ -8,12 +8,11 @@
   box-shadow: var(--card-shadow);
   border: 1px solid var(--card-border);
   background: var(--card-bg);
-  backdrop-filter: blur(18px);
   transition: transform 160ms ease-out, box-shadow 160ms ease-out, border-color 200ms ease-out;
 }
 
 .slideshow-container:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: var(--card-shadow-strong);
   border-color: var(--accent-border-strong);
 }
@@ -29,35 +28,9 @@
   background-position: center;
   opacity: 0;
   transition: opacity 1.6s ease-in-out;
-  animation-name: ken-burns;
-  animation-duration: 28s;
-  animation-timing-function: ease-out;
-  animation-iteration-count: infinite;
-  filter: saturate(1.08) brightness(1.05);
-}
-
-.slide:nth-child(odd) {
-  animation-name: ken-burns-alt;
+  filter: saturate(1.02) brightness(1.02);
 }
 
 .slide.active {
   opacity: 1;
-}
-
-@keyframes ken-burns {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    transform: scale(1.12) translate(-2%, 2%);
-  }
-}
-
-@keyframes ken-burns-alt {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-  100% {
-    transform: scale(1.12) translate(2%, -2%);
-  }
 }

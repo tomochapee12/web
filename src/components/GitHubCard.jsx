@@ -22,7 +22,7 @@ const GitHubCard = () => {
           <p className="card-subtitle">{githubUsername}</p>
         </div>
         <a href={githubUrl} className="follow-button" target="_blank" rel="noopener noreferrer">
-          Follow
+          Open
         </a>
       </div>
     </div>
