@@ -40,7 +40,7 @@ const HomelabStatusCard = () => (
         </div>
         <h2>A compact homelab, actively maintained.</h2>
         <p>
-          Proxmoxを中心に、DNS、監視、アプリ公開、データ系ワークロードを分けて運用しています。
+          Proxmoxを中心に、DNS、監視、アプリ公開、データ系ワークロードを分けて運用中
         </p>
         <div className="homelab-stack" aria-label="Homelab stack">
           {stackItems.map((item) => (
