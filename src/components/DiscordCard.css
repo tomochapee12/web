@@ -10,18 +10,19 @@
   flex-direction: column;
   gap: 18px;
   color: var(--fg);
+  min-height: 100%;
 }
 
 .discord-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--card-shadow-strong);
-  border-color: var(--accent-border-strong);
+  border-color: var(--card-border-strong);
 }
 
 .discord-card:focus-within {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25), var(--card-shadow);
-  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 3px rgba(134, 75, 91, 0.24), var(--card-shadow);
+  border-color: var(--card-border-strong);
 }
 
 /* .discord-header: aligns icon, text and action button */
@@ -34,7 +35,7 @@
 
 /* .discord-icon-wrapper: icon tile with subtle glow */
 .discord-icon-wrapper {
-  background: var(--accent-soft);
+  background: var(--card-bg);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
@@ -42,13 +43,20 @@
   width: 48px;
   height: 48px;
   color: var(--accent);
-  border: 1px solid rgba(47, 111, 115, 0.16);
-  transition: color var(--transition-base), border-color var(--transition-base);
+  border: none;
+  box-shadow: none;
+  transition: color var(--transition-base);
 }
 
 .discord-card:hover .discord-icon-wrapper {
   color: var(--accent-strong);
-  border-color: var(--accent-border-strong);
+}
+
+.discord-title-icon {
+  width: 27px;
+  height: 27px;
+  object-fit: contain;
+  opacity: 0.82;
 }
 
 /* .discord-title-group: groups title and username */
@@ -93,6 +101,12 @@
   color: color-mix(in srgb, var(--fg-muted) 88%, var(--fg) 12%);
 }
 
+.activity-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 12px;
+}
+
 /* .activity-card: nested card for current activity */
 .activity-card {
   background: rgba(32, 42, 55, 0.05);
@@ -123,6 +137,19 @@
   height: 60px;
   border-radius: var(--radius-sm);
   object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.activity-image-fallback {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  background: rgba(47, 111, 115, 0.12);
+  color: var(--accent-strong);
+  font-weight: 700;
 }
 
 .activity-name {
@@ -134,6 +161,88 @@
   margin: 2px 0 0 0;
   font-size: 0.9rem;
   color: color-mix(in srgb, var(--fg-muted) 86%, var(--fg) 14%);
+}
+
+.activity-empty {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: 0.95rem;
+}
+
+.contact-link-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.contact-link-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.contact-link-heading p,
+.contact-link-heading span {
+  margin: 0;
+}
+
+.contact-link-heading p {
+  font-weight: 700;
+}
+
+.contact-link-heading span {
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+}
+
+.contact-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.contact-link-item {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  column-gap: 10px;
+  row-gap: 2px;
+  align-items: center;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  color: var(--fg);
+  text-decoration: none;
+  background: rgba(32, 42, 55, 0.045);
+  border: 1px solid rgba(32, 42, 55, 0.08);
+  transition: transform var(--transition-base), border-color var(--transition-base), background var(--transition-base);
+}
+
+.contact-link-item:hover,
+.contact-link-item:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--accent-border-strong);
+  background: rgba(47, 111, 115, 0.08);
+}
+
+.contact-link-icon {
+  grid-row: span 2;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.contact-link-item span {
+  color: var(--fg-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.contact-link-item strong {
+  font-size: 0.96rem;
+  line-height: 1.25;
 }
 
 /* placeholder keeps layout stable while loading */
@@ -153,8 +262,9 @@
     align-items: flex-start;
   }
 
-  .follow-button-discord {
-    width: 100%;
-    justify-content: center;
+  .contact-link-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
   }
 }

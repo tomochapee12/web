@@ -18,13 +18,13 @@
 .annict-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--card-shadow-strong);
-  border-color: var(--accent-border-strong);
+  border-color: var(--card-border-strong);
 }
 
 .annict-card:focus-within {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25), var(--card-shadow);
-  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 3px rgba(134, 75, 91, 0.24), var(--card-shadow);
+  border-color: var(--card-border-strong);
 }
 
 /* .card-header: aligns icon and title */
@@ -34,17 +34,21 @@
   gap: 16px;
 }
 
-/* .card-icon: accent-backed icon tile */
 .annict-card .card-icon {
-  background: var(--accent-soft);
+  background: var(--card-bg);
   width: 46px;
   height: 46px;
   border-radius: var(--radius-sm);
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--accent);
-  border: 1px solid rgba(47, 111, 115, 0.16);
+}
+
+.annict-title-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  opacity: 0.82;
 }
 
 /* .card-title: section title styling */
@@ -95,6 +99,20 @@
   flex-shrink: 0;
 }
 
+.anime-image-placeholder {
+  width: 60px;
+  height: 84px;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+  background: var(--bg-muted);
+  color: var(--fg-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
 /* .anime-details: vertical text grouping */
 .anime-details {
   display: flex;
@@ -122,12 +140,12 @@
 }
 
 /* loading and error states stay centred within card */
-.loading-placeholder,
-.error-message {
+.annict-card .loading-placeholder,
+.annict-card.error-message {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  min-height: 200px;
   color: var(--fg-muted);
 }
 

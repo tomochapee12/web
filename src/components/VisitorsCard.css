@@ -13,29 +13,57 @@
 .visitors-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--card-shadow-strong);
-  border-color: var(--accent-border-strong);
+  border-color: var(--card-border-strong);
 }
 
 .visitors-card:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25), var(--card-shadow);
-  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 3px rgba(134, 75, 91, 0.24), var(--card-shadow);
+  border-color: var(--card-border-strong);
+}
+
+.visitors-header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 18px 0;
+}
+
+.visitors-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  flex: 0 0 auto;
+}
+
+.visitors-title-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.82;
 }
 
 /* .visitors-title: header label for the metric */
 .visitors-title {
-  margin: 0 0 18px 0;
-  font-weight: 600;
+  margin: 0;
+  font-weight: 700;
   font-size: clamp(1.05rem, 2.3vw, 1.25rem);
   color: color-mix(in srgb, var(--fg-muted) 85%, var(--fg) 15%);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
 }
 
-/* .counter-display: flex layout for digits */
 .counter-display {
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   justify-content: center;
-  gap: 10px;
+  gap: clamp(5px, 1.2vw, 10px);
+  width: 100%;
 }
 
 /* .digit-box: mono-digit tile */
@@ -44,11 +72,11 @@
   color: color-mix(in srgb, var(--fg) 92%, #000 8%);
   font-family: var(--font-numeric);
   font-variant-numeric: tabular-nums;
-  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  font-size: clamp(1.05rem, 3vw, 1.8rem);
   font-weight: 600;
-  padding: 6px 14px;
+  padding: 6px 0;
   border-radius: var(--radius-sm);
-  min-width: 28px;
+  min-width: 0;
   box-shadow: inset 0 0 0 1px rgba(32, 42, 55, 0.14);
 }
 
@@ -60,6 +88,7 @@
   letter-spacing: 0.4em;
   color: color-mix(in srgb, var(--fg-muted) 88%, var(--fg) 12%);
   animation: blink 1.4s ease-in-out infinite;
+  grid-column: 1 / -1;
 }
 
 @keyframes blink {
@@ -69,5 +98,11 @@
   }
   50% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .digit-box {
+    font-size: clamp(1rem, 6vw, 1.35rem);
   }
 }

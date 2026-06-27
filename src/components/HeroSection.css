@@ -129,13 +129,14 @@
 
 .scroll-indicator:hover {
   transform: translateX(-50%) translateY(-2px);
-  border-color: var(--accent-border-strong);
+  border-color: var(--card-border-strong);
   background: rgba(255, 255, 255, 0.96);
 }
 
 .scroll-indicator:focus-visible {
   transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8), 0 0 0 6px rgba(90, 116, 255, 0.45);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8), 0 0 0 6px rgba(134, 75, 91, 0.24);
+  border-color: var(--card-border-strong);
   background: rgba(255, 255, 255, 0.96);
   animation-play-state: paused;
 }

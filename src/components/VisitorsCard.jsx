@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './VisitorsCard.css';
+import visitorsIcon from '../assets/icons/visitors.svg';
 
 const Digit = ({ number }) => (
   <div className="digit-box">{number}</div>
@@ -41,7 +42,12 @@ const VisitorsCard = () => {
 
   return (
     <div className="visitors-card">
-      <h3 className="visitors-title">Visitors</h3>
+      <div className="visitors-header">
+        <span className="visitors-icon-wrapper">
+          <img src={visitorsIcon} alt="" className="visitors-title-icon" aria-hidden="true" />
+        </span>
+        <h3 className="visitors-title">Visitors</h3>
+      </div>
       <div className="counter-display">
         {isLoading 
           ? <div className="loading-dots">...</div>

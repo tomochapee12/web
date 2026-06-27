@@ -1,12 +1,31 @@
 // src/components/AnnictCard.jsx
 import React, { useState, useEffect } from 'react';
 import './AnnictCard.css';
+import watchingIcon from '../assets/icons/watching.svg';
 
-const AnnictIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M13 18V20H17V22H7V20H11V18H3C2.44772 18 2 17.5523 2 17V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V17C22 17.5523 21.5523 18 21 18H13ZM4 5V16H20V5H4ZM10 7.5L15 10.5L10 13.5V7.5Z"></path>
-  </svg>
-);
+const devPreviewWorks = [
+  {
+    annictId: 'dev-preview-1',
+    title: 'Annict preview item',
+    image: {},
+    seasonName: 'watching',
+    seasonYear: 'Local',
+  },
+  {
+    annictId: 'dev-preview-2',
+    title: 'Set VITE_ANNICT_API_TOKEN for live data',
+    image: {},
+    seasonName: 'preview',
+    seasonYear: 'Dev',
+  },
+  {
+    annictId: 'dev-preview-3',
+    title: 'ローカル表示確認用データ',
+    image: {},
+    seasonName: 'sample',
+    seasonYear: 'Test',
+  },
+];
 
 const AnnictCard = () => {
   const [animeList, setAnimeList] = useState([]);
@@ -17,7 +36,11 @@ const AnnictCard = () => {
 
   useEffect(() => {
     if (!accessToken) {
-      setError("Annict API token is not configured.");
+      if (import.meta.env.DEV) {
+        setAnimeList(devPreviewWorks);
+      } else {
+        setError("Annict API token is not configured.");
+      }
       setLoading(false);
       return;
     }
@@ -63,7 +86,12 @@ const AnnictCard = () => {
         
         setAnimeList(result.data.viewer.works.nodes);
       } catch (e) {
-        setError(e.message);
+        if (import.meta.env.DEV) {
+          console.warn("Using Annict preview data in development:", e);
+          setAnimeList(devPreviewWorks);
+        } else {
+          setError(e.message);
+        }
       } finally {
         setLoading(false);
       }
@@ -89,29 +117,31 @@ const AnnictCard = () => {
   return (
     <div className="info-card annict-card">
       <div className="card-header">
-        <div className="card-icon"><AnnictIcon /></div>
-        <h3 className="card-title">見てるアニメ</h3>
+        <div className="card-icon">
+          <img src={watchingIcon} alt="" className="annict-title-icon" aria-hidden="true" />
+        </div>
+        <h3 className="card-title">Watching Anime</h3>
       </div>
       <div className="anime-list">
         {animeList.map(anime => {
-          let imageUrl = anime.image.recommendedImageUrl;
+          let imageUrl = anime.image?.recommendedImageUrl;
           let imageType = 'portrait';
 
           if (!imageUrl) {
-            imageUrl = anime.image.facebookOgImageUrl;
+            imageUrl = anime.image?.facebookOgImageUrl;
             if (imageUrl) {
               imageType = 'landscape';
             }
           }
 
           if (!imageUrl) {
-            imageUrl = anime.image.twitterAvatarUrl;
+            imageUrl = anime.image?.twitterAvatarUrl;
           }
 
           const layoutClass = imageType === 'landscape' ? 'anime-item-landscape' : '';
 
           return (
-            <a key={anime.annictId} href={`https://annict.com/works/${anime.annictId}`} target="_blank" rel="noopener noreferrer" className={`anime-item ${layoutClass}`}>
+            <a key={anime.annictId} href={String(anime.annictId).startsWith('dev-preview') ? 'https://annict.com/@tete_1212' : `https://annict.com/works/${anime.annictId}`} target="_blank" rel="noopener noreferrer" className={`anime-item ${layoutClass}`}>
               {imageUrl ? (
                 <img src={imageUrl} alt={anime.title} className="anime-image" />
               ) : (

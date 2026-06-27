@@ -15,13 +15,13 @@
 .repo-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--card-shadow-strong);
-  border-color: var(--accent-border-strong);
+  border-color: var(--card-border-strong);
 }
 
 .repo-card:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 0 0 3px rgba(47, 77, 224, 0.25), var(--card-shadow);
-  border-color: var(--accent-strong);
+  box-shadow: 0 0 0 3px rgba(134, 75, 91, 0.24), var(--card-shadow);
+  border-color: var(--card-border-strong);
 }
 
 /* .repo-name: headline for repository */

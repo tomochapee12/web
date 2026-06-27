@@ -1,0 +1,308 @@
+.homelab-status-card {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.2fr);
+  grid-template-areas:
+    "hero topology"
+    "status topology";
+  gap: clamp(18px, 3vw, 24px);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(47, 111, 115, 0.1), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 250, 0.92));
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  padding: clamp(22px, 4vw, 30px);
+  color: var(--fg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color 200ms ease-out;
+  overflow: hidden;
+}
+
+.homelab-status-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-strong);
+  border-color: var(--card-border-strong);
+}
+
+.homelab-hero {
+  grid-area: hero;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.homelab-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.homelab-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.homelab-title-icon-wrapper {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: none;
+  box-shadow: none;
+}
+
+.homelab-title-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  opacity: 0.82;
+}
+
+.homelab-kicker {
+  margin: 0;
+  color: var(--accent-strong);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.homelab-copy h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.homelab-copy p {
+  margin: 0;
+  color: color-mix(in srgb, var(--fg-muted) 84%, var(--fg) 16%);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.homelab-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.homelab-stack span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  padding: 7px 9px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgba(32, 42, 55, 0.08);
+  color: var(--fg);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.homelab-stack img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.homelab-topology {
+  grid-area: topology;
+  min-width: 0;
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.46)),
+    rgba(32, 42, 55, 0.045);
+  border: 1px solid rgba(32, 42, 55, 0.08);
+  padding: clamp(16px, 3vw, 22px);
+  display: grid;
+  align-content: center;
+  gap: 14px;
+}
+
+.topology-row {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  gap: 12px;
+}
+
+.topology-entry {
+  grid-template-columns: minmax(0, 0.8fr) minmax(28px, 0.18fr) minmax(0, 1.2fr);
+}
+
+.topology-core {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.topology-node,
+.topology-service {
+  width: 100%;
+  min-height: 58px;
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(32, 42, 55, 0.11);
+  color: var(--fg);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.node-cloudflare {
+  color: #c95c1c;
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(249, 115, 22, 0.22);
+}
+
+.node-proxmox {
+  color: var(--accent-strong);
+  border-color: var(--accent-border-strong);
+}
+
+.topology-link,
+.topology-spine {
+  border-radius: 999px;
+  background: rgba(47, 111, 115, 0.34);
+}
+
+.topology-link {
+  width: 100%;
+  height: 2px;
+}
+
+.topology-spine {
+  justify-self: center;
+  width: 2px;
+  height: 18px;
+}
+
+.topology-branches {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.topology-service {
+  min-height: 76px;
+  place-items: start center;
+  align-content: center;
+  gap: 4px;
+}
+
+.topology-service span {
+  color: var(--fg-muted);
+  font-size: 0.74rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.homelab-status-grid {
+  grid-area: status;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.homelab-status-item {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 3px;
+  padding: 11px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(32, 42, 55, 0.08);
+}
+
+.homelab-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--fg-muted);
+  box-shadow: 0 0 0 2px rgba(32, 42, 55, 0.07);
+}
+
+.homelab-status-dot.good {
+  background: #2f8f5b;
+}
+
+.homelab-status-dot.neutral {
+  background: #8a76c9;
+}
+
+.homelab-status-item p,
+.homelab-status-item strong,
+.homelab-status-item small {
+  margin: 0;
+}
+
+.homelab-status-item p {
+  min-width: 0;
+  color: var(--fg-muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.homelab-status-item strong,
+.homelab-status-item small {
+  grid-column: 2;
+}
+
+.homelab-status-item strong {
+  color: var(--fg);
+  font-size: 1.08rem;
+  line-height: 1.1;
+}
+
+.homelab-status-item small {
+  color: var(--fg-muted);
+  font-size: 0.76rem;
+  line-height: 1.25;
+}
+
+@media (max-width: 1100px) {
+  .homelab-status-card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "hero"
+      "topology"
+      "status";
+  }
+}
+
+@media (max-width: 720px) {
+  .homelab-hero {
+    align-items: stretch;
+  }
+
+  .topology-entry,
+  .topology-core,
+  .topology-branches,
+  .homelab-status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topology-link {
+    width: 2px;
+    height: 18px;
+  }
+}
